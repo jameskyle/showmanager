@@ -1,0 +1,33 @@
+Knocked this out today, so forgive the lack of documentation.
+
+Short story: Put a list of shows you want to get info for in config/shows.yml in
+the following format:
+
+tag: id
+
+You get the tag and id from TV.com. Just navigate to your favorite show and you'll 
+see a url like this => 
+http://www.tv.com/heroes/show/17552/episode_guide.html?season=3&tag=season_dropdown%3Bdropdown
+
+The "tag" is heroes and the "id" is 17552. One more example, 
+
+http://www.tv.com/its-always-sunny-in-philadelphia/show/33928/summary.html?tag=profile_module;dropdown
+
+"tag" is its-always-sunny-in-philadelphia and the "id" is 33928.
+
+The config/shows.yml file already contains a list of shows my wife and I watch. 
+
+The show_manager.rb script only has three switches. I'll just put the usage here:
+
+Description: Fetch Episode information from tv.com or from a previous cache
+Options: 
+    -h, --help                       Display this help/usage message
+    -c, --[no-]cache                 Use the yaml cache from previous fetch operation. Default: True
+
+The first time the script is run it should be with the --no-cache switch so it'll fetch the raw
+data from tv.com. After that, reruns can be done using a cache file in cache/shows.yml.
+
+Mostly this is for testing and writing custom scripts. I plan to clean this up and add some
+better functionality, but for what it's worth here's what I have so far. Not bad for a couple of hours
+(for me at least).
+
